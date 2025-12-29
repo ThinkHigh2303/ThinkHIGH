@@ -39,6 +39,7 @@ type ProgramCard = {
   description: string;
   highlights: string[];
   badge: string;
+  price: number;
   syllabus: {
     title: string;
     duration: string;
@@ -81,6 +82,7 @@ const programs: ProgramCard[] = [
       'Interview prep & mock calls',
     ],
     badge: 'Customer Success',
+    price: 29999,
     syllabus: [
       {
         title: 'Week 1: Career Foundation & Corporate Mindset',
@@ -160,6 +162,7 @@ const programs: ProgramCard[] = [
       'Employee lifecycle & compliance',
     ],
     badge: 'Human Resources',
+    price: 29999,
     syllabus: [
       {
         title: 'Week 1: Introduction to HR',
@@ -239,6 +242,7 @@ const programs: ProgramCard[] = [
       'CRM for sales & pipeline management',
     ],
     badge: 'Business Development',
+    price: 29999,
     syllabus: [
       {
         title: 'Week 1: Introduction to Sales & BDA Role',
@@ -766,6 +770,12 @@ export default function Home() {
                       <BadgeCheck className="h-4 w-4" />
                       Beginner Friendly
                     </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold text-slate-900">
+                        ₹{program.price.toLocaleString('en-IN')}
+                      </span>
+                      <span className="text-sm text-slate-500">per course</span>
+                    </div>
                     <div className="space-y-2 text-sm text-slate-700">
                       {program.highlights.map((item) => (
                         <div key={item} className="flex items-start gap-2">
@@ -1104,6 +1114,12 @@ export default function Home() {
                   <p className="mt-1 text-sm text-slate-600">
                     Detailed 90-day plan with live sessions, hands-on labs, and interview prep.
                   </p>
+                  <div className="mt-3 flex items-baseline gap-2">
+                    <span className="text-2xl font-bold text-indigo-600">
+                      ₹{selectedProgram.price.toLocaleString('en-IN')}
+                    </span>
+                    <span className="text-sm text-slate-500">per course</span>
+                  </div>
                 </div>
                 <button
                   onClick={() => setSyllabusOpen(false)}
@@ -1186,7 +1202,9 @@ export default function Home() {
                       : 'Tell us about your goals'}
                   </h3>
                   <p className="text-sm text-slate-600">
-                    Share your details so we can guide you to the right track and send the syllabus.
+                    {enquiryIntent === 'brochure'
+                      ? 'Download the course brochure and get pricing details (₹29,999 per course).'
+                      : 'Share your details so we can guide you to the right track and send the syllabus.'}
                   </p>
                 </div>
                 <button
@@ -1252,6 +1270,19 @@ export default function Home() {
                       ))}
                     </select>
                   </label>
+                  {(formState.course || enquiryCourse) && enquiryIntent === 'brochure' && (
+                    <div className="sm:col-span-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-sm font-medium text-slate-700">Course Price:</span>
+                        <span className="text-2xl font-bold text-indigo-600">
+                          ₹{programs.find(p => p.title === (formState.course || enquiryCourse))?.price.toLocaleString('en-IN') || '29,999'}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs text-slate-600">
+                        Complete payment details will be shared after you submit this form.
+                      </p>
+                    </div>
+                  )}
                   <label className="sm:col-span-2 flex flex-col gap-2 text-sm font-medium text-slate-800">
                     How can we help?
                     <textarea
