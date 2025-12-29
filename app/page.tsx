@@ -550,9 +550,36 @@ export default function Home() {
         throw new Error('Unable to submit. Please try again.');
       }
       setFormStatus('success');
-      setSuccessMessage('Thanks! We received your details and will reach out shortly.');
-      setEnquiryOpen(false);
-      setTimeout(() => setSuccessMessage(null), 4000);
+      
+      // If brochure intent, trigger PDF download after successful submission
+      if (enquiryIntent === 'brochure') {
+        const selectedCourse = formState.course || enquiryCourse;
+        const selectedProgram = programs.find(p => p.title === selectedCourse);
+        
+        if (selectedProgram?.pdf) {
+          // Create a temporary link and trigger download
+          const link = document.createElement('a');
+          link.href = selectedProgram.pdf;
+          link.download = selectedProgram.pdf.split('/').pop() || 'brochure.pdf';
+          link.target = '_blank';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
+          setSuccessMessage('Thanks! Your brochure is downloading. We will also reach out shortly.');
+        } else {
+          setSuccessMessage('Thanks! We received your details and will send the brochure shortly.');
+        }
+      } else {
+        setSuccessMessage('Thanks! We received your details and will reach out shortly.');
+      }
+      
+      // Close form after a short delay to show success message
+      setTimeout(() => {
+        setEnquiryOpen(false);
+        setSuccessMessage(null);
+      }, 2000);
+      
       setFormState({
         name: '',
         email: '',
@@ -792,15 +819,13 @@ export default function Home() {
                         <BookOpen className="h-4 w-4" />
                         View Syllabus
                       </button>
-                      <a
-                        href={program.pdf}
-                        target="_blank"
-                        rel="noreferrer"
+                      <button
+                        onClick={() => openEnquiry('brochure', program.title)}
                         className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-indigo-200 hover:text-indigo-700"
                       >
                         <ArrowUpRight className="h-4 w-4" />
-                        Download PDF
-                      </a>
+                        Download Brochure
+                      </button>
                     </div>
                   </div>
                 </article>
@@ -1163,15 +1188,16 @@ export default function Home() {
                   Download the full syllabus PDF or speak with admissions for batch availability.
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <a
-                    href={selectedProgram.pdf}
-                    target="_blank"
-                    rel="noreferrer"
+                  <button
+                    onClick={() => {
+                      setSyllabusOpen(false);
+                      openEnquiry('brochure', selectedProgram.title);
+                    }}
                     className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700"
                   >
                     <BookOpen className="h-4 w-4" />
-                    Download PDF
-                  </a>
+                    Download Brochure
+                  </button>
                   <button
                     onClick={() => setSyllabusOpen(false)}
                     className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-indigo-200 hover:text-indigo-700"
@@ -1298,9 +1324,9 @@ export default function Home() {
                     {formError}
                   </p>
                 )}
-                {formStatus === 'success' && (
+                {formStatus === 'success' && successMessage && (
                   <p className="mt-3 text-sm font-semibold text-green-600">
-                    Thanks! We received your details and will share the syllabus link shortly.
+                    {successMessage}
                   </p>
                 )}
               </div>
