@@ -582,7 +582,7 @@ export default function Home() {
             />
             <div>
               <p className="text-lg font-semibold text-slate-900">ThinkHigh</p>
-              <p className="text-xs text-slate-500">Modern Edtech Careers</p>
+              <p className="text-xs text-slate-500">Start your career here</p>
             </div>
           </div>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 md:flex">
