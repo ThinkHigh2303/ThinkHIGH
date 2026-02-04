@@ -23,6 +23,7 @@ import {
   Users,
   Instagram,
   Phone,
+  MapPin,
   X,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -1372,6 +1373,13 @@ export default function Home() {
               name: 'ThinkHigh',
               url: 'https://thinkhigh.in',
               logo: 'https://thinkhigh.in/logo.png',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'No. 472/7, Balaji Arcade, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala',
+                addressLocality: 'Bengaluru',
+                postalCode: '560095',
+                addressCountry: 'IN',
+              },
               sameAs: [
                 'https://www.linkedin.com',
                 'https://twitter.com',
@@ -1499,6 +1507,12 @@ export default function Home() {
               <div className="flex items-center gap-3 text-sm text-white/80">
                 <Mail className="h-4 w-4 text-indigo-400" />
                 <span>contact@thinkhigh.in</span>
+              </div>
+              <div className="flex items-start gap-3 text-sm text-white/80">
+                <MapPin className="mt-1 h-4 w-4 shrink-0 text-indigo-400" />
+                <span>
+                  No. 472/7, Balaji Arcade, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala, Bengaluru – 560095
+                </span>
               </div>
             </div>
           </div>

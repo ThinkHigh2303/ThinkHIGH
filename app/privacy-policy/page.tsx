@@ -37,7 +37,7 @@ const sections = [
   },
   {
     heading: "Contact",
-    body: "Email: support@thinkhigh.in",
+    body: "Email: support@thinkhigh.in. Registered Address: No. 472/7, Balaji Arcade, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala, Bengaluru – 560095",
   },
 ];
 

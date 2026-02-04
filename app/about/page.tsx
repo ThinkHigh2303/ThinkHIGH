@@ -46,6 +46,13 @@ const aboutJsonLd = {
     "@type": "Organization",
     name: "ThinkHigh",
     url: "https://thinkhigh.in",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "No. 472/7, Balaji Arcade, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala",
+      addressLocality: "Bengaluru",
+      postalCode: "560095",
+      addressCountry: "IN",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -226,6 +233,9 @@ export default function AboutPage() {
             </p>
             <p>
               Phone: <span className="font-semibold text-indigo-700">+91 8699957675</span>
+            </p>
+            <p>
+              Address: <span className="font-semibold text-indigo-700">No. 472/7, Balaji Arcade, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala, Bengaluru – 560095</span>
             </p>
             <p className="text-slate-600">
               Reach out for admissions, partnerships, or press inquiries. We typically respond
