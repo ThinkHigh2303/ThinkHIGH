@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ThinkHigh — EdTech Career Acceleration Platform
 
-## Getting Started
+This repository contains the modern web platform for [ThinkHigh](https://thinkhigh.in), a career accelerator focused on launching careers in non-tech, HR, and sales domains.
 
-First, run the development server:
+## 🚀 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The platform was designed and developed from scratch as a high-performance, production-ready web application built to scale.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Core Deliverables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Full-Stack Implementation**  
+  Built using **Next.js 15 (App Router)** and **Tailwind CSS**, optimized for performance, SEO, and fast page transitions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Integrated Payments & Lead Flow**  
+  Secure payment gateway integration, dynamic course management, and a structured lead capture pipeline powered by backend APIs.
 
-## Learn More
+- **Premium UI/UX Design**  
+  Fully responsive, mobile-first experience featuring smooth animations, modern glassmorphism elements, and optimized user journeys.
 
-To learn more about Next.js, take a look at the following resources:
+- **Scalable Architecture**  
+  Modular component structure with clean separation of concerns, designed to support future course expansion and traffic growth.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧠 Engineering Highlights
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- SEO-first architecture using server components
+- Optimized asset loading & image handling
+- Clean API design for extensibility
+- Performance-focused deployment strategy
 
-## Deploy on Vercel
+This project demonstrates the ability to deliver scalable, production-grade web platforms aligned with real business objectives.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🔗 **Live Site:** https://thinkhigh.in
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### Technical Partner
+
+Designed & developed by [Somanath Khadanga](https://somanathkhadanga.com/)

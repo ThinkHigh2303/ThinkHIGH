@@ -551,12 +551,12 @@ export default function Home() {
         throw new Error('Unable to submit. Please try again.');
       }
       setFormStatus('success');
-      
+
       // If brochure intent, trigger PDF download after successful submission
       if (enquiryIntent === 'brochure') {
         const selectedCourse = formState.course || enquiryCourse;
         const selectedProgram = programs.find(p => p.title === selectedCourse);
-        
+
         if (selectedProgram?.pdf) {
           // Create a temporary link and trigger download
           const link = document.createElement('a');
@@ -566,7 +566,7 @@ export default function Home() {
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          
+
           setSuccessMessage('Thanks! Your brochure is downloading. We will also reach out shortly.');
         } else {
           setSuccessMessage('Thanks! We received your details and will send the brochure shortly.');
@@ -574,13 +574,13 @@ export default function Home() {
       } else {
         setSuccessMessage('Thanks! We received your details and will reach out shortly.');
       }
-      
+
       // Close form after a short delay to show success message
       setTimeout(() => {
         setEnquiryOpen(false);
         setSuccessMessage(null);
       }, 2000);
-      
+
       setFormState({
         name: '',
         email: '',
@@ -1184,7 +1184,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-                <div className="flex flex-col gap-3 border-t border-slate-200 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+              <div className="flex flex-col gap-3 border-t border-slate-200 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
                 <div className="text-sm text-slate-700">
                   Download the full syllabus PDF or speak with admissions for batch availability.
                 </div>
@@ -1244,12 +1244,12 @@ export default function Home() {
               </div>
 
               <div className="max-h-[70vh] overflow-y-auto px-6 py-5 sm:px-8">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="flex flex-col gap-2 text-sm font-medium text-slate-800">
-                      Full name
-                      <input
-                        value={formState.name}
-                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="flex flex-col gap-2 text-sm font-medium text-slate-800">
+                    Full name
+                    <input
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       placeholder="Priya Sharma"
                       className="h-11 rounded-xl border border-slate-200 px-3 text-sm text-slate-900 outline-none transition focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100"
                     />
@@ -1526,8 +1526,19 @@ export default function Home() {
               <span>Refund Policy</span>
             </div>
           </div>
+          <div className="mt-4 border-t border-white/10 pt-4 text-center text-xs text-white/50">
+            Designed & Developed by{' '}
+            <a
+              href="https://somanathkhadanga.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white/60 transition-colors"
+            >
+              Somanath Khadanga
+            </a>
+          </div>
         </footer>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
